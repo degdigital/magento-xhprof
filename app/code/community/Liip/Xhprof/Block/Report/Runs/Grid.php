@@ -292,7 +292,7 @@ class Liip_Xhprof_Block_Report_Runs_Grid extends Mage_Adminhtml_Block_Widget_Gri
             }
             return self::API_URL . '?' . implode('&', $p);
         } else {
-            $gaData = urlencode(base64_encode(serialize($params)));
+            $gaData = urlencode(base64_encode(json_encode($params)));
             $gaHash = Mage::helper('adminhtml/dashboard_data')->getChartDataHash($gaData);
             $params = array('ga' => $gaData, 'h' => $gaHash);
             return $this->getUrl('adminhtml/dashboard/tunnel', array('_query' => $params));
